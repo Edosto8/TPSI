@@ -15,7 +15,7 @@ public class Main {
 
         for (int i = 0; i < max_Auto0; i++) {
             int index = r.nextInt(0, types.length);
-            autos.add(new Auto("Auto" + (i+1), p, types[index]));
+            autos.add(new Auto(types[index] + "-" +(i+1), p, types[index]));
 
 
 

@@ -13,6 +13,9 @@ public class Auto extends Thread {
     }
 
     public Auto(String name, ParkingLot parkingLot, VehicleType vehicleType) {
+        System.out.println(type);
+
+        setName(name);
         this.rand = new Random();
         this.parkingLot= parkingLot;
         this.type= vehicleType;

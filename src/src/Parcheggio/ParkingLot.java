@@ -8,13 +8,14 @@ public class ParkingLot {
         this.availableSlots= MAX;
 
 
+
     }
     public synchronized void enter (Auto auto) throws InterruptedException {
         while (availableSlots< auto.getType().getPostiOccupati()) {
             System.out.println( auto.getName()+"in attesa (parcheggio pieno)");
             wait();
         }
-        availableSlots--;
+        availableSlots-=auto.getType().getPostiOccupati();
         System.out.println(auto.getName()+ " entrata. Posti disponibili " + availableSlots);
     }
     public synchronized void exit(Auto auto) {
