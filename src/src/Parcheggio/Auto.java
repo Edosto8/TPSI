@@ -7,10 +7,16 @@ public class Auto extends Thread {
     private ParkingLot parkingLot;
     private VehicleType type;
 
+
+    public VehicleType getType() {
+        return type;
+    }
+
     public Auto(String name, ParkingLot parkingLot, VehicleType vehicleType) {
         this.rand = new Random();
         this.parkingLot= parkingLot;
         this.type= vehicleType;
+
     }
 
     @Override
@@ -25,6 +31,7 @@ public class Auto extends Thread {
             parkingLot.enter(this);
             int parkTime = 3000 + rand.nextInt(5001);
             sleep(parkTime);
+            parkingLot.exit(this);
         } catch (InterruptedException e) {
             interrupt();
         }

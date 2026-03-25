@@ -10,15 +10,16 @@ public class ParkingLot {
 
     }
     public synchronized void enter (Auto auto) throws InterruptedException {
-        while (availableSlots==0) {
+        while (availableSlots< auto.getType().getPostiOccupati()) {
             System.out.println( auto.getName()+"in attesa (parcheggio pieno)");
             wait();
         }
         availableSlots--;
         System.out.println(auto.getName()+ " entrata. Posti disponibili " + availableSlots);
     }
-    public void exit(Auto auto) {
-        availableSlots++;
+    public synchronized void exit(Auto auto) {
+        availableSlots+=auto.getType().getPostiOccupati();
         System.out.println(auto.getName() + " uscita. posti disponibili " + availableSlots);
+        notifyAll();
     }
 }
