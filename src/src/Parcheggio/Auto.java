@@ -5,9 +5,12 @@ import java.util.Random;
 public class Auto extends Thread {
     private Random rand;
     private ParkingLot parkingLot;
+    private VehicleType type;
 
-    public Auto() {
+    public Auto(String name, ParkingLot parkingLot, VehicleType vehicleType) {
         this.rand = new Random();
+        this.parkingLot= parkingLot;
+        this.type= vehicleType;
     }
 
     @Override
@@ -18,6 +21,7 @@ public class Auto extends Thread {
             int drivetime = 2000 + rand.nextInt(3000);
             System.out.println(getName() + " sta guidando per " + drivetime / 1000 + " sec");
             sleep(drivetime);
+
             parkingLot.enter(this);
             int parkTime = 3000 + rand.nextInt(5001);
             sleep(parkTime);

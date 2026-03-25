@@ -17,4 +17,8 @@ public class ParkingLot {
         availableSlots--;
         System.out.println(auto.getName()+ " entrata. Posti disponibili " + availableSlots);
     }
+    public void exit(Auto auto) {
+        availableSlots++;
+        System.out.println(auto.getName() + " uscita. posti disponibili " + availableSlots);
+    }
 }
